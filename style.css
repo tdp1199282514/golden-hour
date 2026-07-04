@@ -266,14 +266,34 @@ h1{
 }
 
 .Message{
-    background-image: url("GHimg/stack_background.webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    background-attachment: fixed;
-
+    position: relative;
     padding: 0 0 40px 0;
+}
+
+.message-bg-wrap{
+  position: relative;
+  padding: 0px 0;
+  padding-bottom: 40px;
+}
+
+.message-bg-wrap::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("GHimg/stack_background.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-attachment: fixed;
+
+  z-index: -1;
+}
+
+.Message .content_frame{
+    position: relative;
+    z-index: 1;
 }
 
 .Message .Story{
