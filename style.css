@@ -266,20 +266,7 @@ h1{
 }
 
 .Message{
-    position: relative;
-    padding: 0 0 40px 0;
-}
-
-.message-bg-wrap{
-  position: relative;
-  padding: 0px 0;
-  padding-bottom: 40px;
-}
-
-.message-bg-wrap::before{
-  content: "";
-  position: absolute;
-  inset: 0;
+  padding: 40px 0;
 
   background-image: url("GHimg/stack_background.webp");
   background-size: cover;
@@ -287,8 +274,12 @@ h1{
   background-repeat: no-repeat;
 
   background-attachment: fixed;
+}
 
-  z-index: -1;
+.message-bg-wrap{
+  position: relative;
+  padding: 0px 0;
+  padding-bottom: 40px;
 }
 
 .Message .content_frame{
@@ -528,9 +519,6 @@ h1{
   background-image: url("GHimg/Amao.webp");
 }
 
-
-
-
 .profile-modal .picture02.cast1 {
   background-image: url("GHimg/Imai.webp");
 }
@@ -578,7 +566,6 @@ h1{
 .profile-modal .picture02.cast12 {
   background-image: url("GHimg/Amao.webp");
 }
-
 
 .profile-card h3,
 .profile-card p {
@@ -716,4 +703,17 @@ footer .copy{
   color: #fff; /* 必要に応じて */
   text-align: center;
   font-size: 12px;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
 }
