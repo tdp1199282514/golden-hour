@@ -266,14 +266,27 @@ h1{
 }
 
 .Message{
-  padding: 40px 0;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 40px;
+}
+
+.message-bg{
+
+  position: absolute;
+
+  inset: 0;
 
   background-image: url("GHimg/stack_background.webp");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 
-  background-attachment: fixed;
+  background-size: cover;
+
+  background-position: center;
+
+  will-change: transform;
+
+  z-index: 0;
+
 }
 
 .message-bg-wrap{

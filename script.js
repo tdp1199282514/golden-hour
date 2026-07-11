@@ -73,3 +73,22 @@ const observer = new IntersectionObserver(
 );
 
 fadeElements.forEach((el) => observer.observe(el));
+
+const message = document.querySelector(".Message");
+const bg = document.createElement("div");
+
+bg.className = "message-bg";
+message.prepend(bg);
+
+function updateParallax() {
+  const rect = message.getBoundingClientRect();
+
+  const offset = rect.top * -1;
+
+  bg.style.transform = `translateY(${offset}px)`;
+}
+
+window.addEventListener("scroll", updateParallax);
+window.addEventListener("resize", updateParallax);
+
+updateParallax();
