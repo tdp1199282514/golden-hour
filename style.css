@@ -266,38 +266,12 @@ h1{
 }
 
 .Message{
-  position: relative;
-  overflow: hidden;
   padding-bottom: 40px;
-}
-
-.message-bg{
-
-  position: absolute;
-
-  inset: 0;
 
   background-image: url("GHimg/stack_background.webp");
-
   background-size: cover;
-
   background-position: center;
-
-  will-change: transform;
-
-  z-index: 0;
-
-}
-
-.message-bg-wrap{
-  position: relative;
-  padding: 0px 0;
-  padding-bottom: 40px;
-}
-
-.Message .content_frame{
-    position: relative;
-    z-index: 1;
+  background-repeat: no-repeat;
 }
 
 .Message .Story{
@@ -729,4 +703,62 @@ footer .copy{
 .fade-up.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+@media (min-width: 900px){
+
+  /* メイン4人 */
+  .profile-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .profile-list .profile-card{
+    width: 100%;
+  }
+
+  .profile-list .picture{
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .profile-list .profile-card h3,
+  .profile-list .profile-card p{
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+
+  /* 残り8人 */
+  .profile-list.grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    padding: 80px 0 0;
+  }
+
+  .profile-list.grid .picture{
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 1;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .profile-list.grid .profile-card h3,
+  .profile-list.grid .profile-card p{
+    max-width: 180px;
+  }
+
+  /* PCでは説明文も表示する場合 */
+  .profile-list.grid .profile-card p{
+    display: none;
+  }
+
 }
