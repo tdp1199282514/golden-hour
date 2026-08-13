@@ -705,6 +705,31 @@ footer .copy{
   transform: translateY(0);
 }
 
+.news-item:nth-child(4) {
+  display: none;
+}
+
+.booking {
+  text-align: center; /* 中央揃え */
+  margin-top: 40px;
+}
+
+.booking a {
+  display: inline-block;
+}
+
+.booking img {
+  width: 280px;      /* バナーサイズ */
+  height: auto;
+  display: block;
+  transition: 0.3s;
+}
+
+.booking img:hover {
+  opacity: 0.8;
+  transform: scale(1.02);
+}
+
 
 @media (min-width: 900px){
 
