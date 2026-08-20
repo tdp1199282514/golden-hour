@@ -260,7 +260,6 @@ h1{
 }
 
 .Story p{
-  font-family: "Noto Sans JP", sans-serif;
   font-size: 16px;
   line-height: 27.2px;
 }
@@ -285,7 +284,6 @@ h1{
 }
 
 .Message p{
-    font-family: "Noto Sans JP", sans-serif;
     color: white;
     line-height: 1.9;
 }
@@ -318,7 +316,7 @@ h1{
 .profile-card .picture{
     width: 260px;
     height: 260px;
-
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     background-image: url("GHimg/Ukita.webp");
     background-size: cover;
     background-position: center;
@@ -784,6 +782,20 @@ footer .copy{
   /* PCでは説明文も表示する場合 */
   .profile-list.grid .profile-card p{
     display: none;
+  }
+
+  .Move_photo {
+    padding-top: 100px;
+  }
+
+  .photo-track img,
+  .photo-track-reverse img {
+    width: 50vw;
+    max-width: 900px;
+  }
+
+  .photo-track-reverse {
+    padding-top: 30px;
   }
 
 }
