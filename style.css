@@ -253,6 +253,7 @@ h1{
 .Introduction .Story{
   max-width: 760px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .Story h2{
@@ -457,19 +458,19 @@ h1{
 }
 
 .profile-card .picture.cast1 {
-  background-image: url("GHimg/Imai.webp");
+  background-image: url("GHimg/masato.jpg");
 }
 
 .profile-card .picture.cast2 {
-  background-image: url("GHimg/Sono.webp");
+  background-image: url("GHimg/sono.jpg");
 }
 
 .profile-card .picture.cast3 {
-  background-image: url("GHimg/Hashiguchi.webp");
+  background-image: url("GHimg/hashiguti.jpg");
 }
 
 .profile-card .picture.cast4 {
-  background-image: url("GHimg/Konishi.webp");
+  background-image: url("GHimg/konishi.jpg");
 }
 
 .profile-card .picture.cast5 {
@@ -501,7 +502,7 @@ h1{
 }
 
 .profile-card .picture.cast12 {
-  background-image: url("GHimg/Amao.webp");
+  background-image: url("GHimg/amao.jpg");
 }
 
 .profile-modal .picture02.cast1 {
@@ -726,6 +727,10 @@ footer .copy{
 .booking img:hover {
   opacity: 0.8;
   transform: scale(1.02);
+}
+
+.com{
+  display: none;
 }
 
 
