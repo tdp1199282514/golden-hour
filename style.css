@@ -506,19 +506,19 @@ h1{
 }
 
 .profile-modal .picture02.cast1 {
-  background-image: url("GHimg/Imai.webp");
+  background-image: url("GHimg/masato.jpg");
 }
 
 .profile-modal .picture02.cast2 {
-  background-image: url("GHimg/Sono.webp");
+  background-image: url("GHimg/sono.jpg");
 }
 
 .profile-modal .picture02.cast3 {
-  background-image: url("GHimg/Hashiguchi.webp");
+  background-image: url("GHimg/hashiguti.jpg");
 }
 
 .profile-modal .picture02.cast4 {
-  background-image: url("GHimg/Konishi.webp");
+  background-image: url("GHimg/konishi.jpg");
 }
 
 .profile-modal .picture02.cast5 {
@@ -731,6 +731,34 @@ footer .copy{
 
 .com{
   display: none;
+}
+
+.staff-credit {
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 64px;
+  text-align: center;
+}
+
+.staff-credit p {
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 24px;
+}
+
+.staff-credit p:first-child {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 899px) {
+  .staff-credit {
+    padding: 0 20px;
+  }
+
+  .staff-credit p {
+    font-size: 12px;
+    line-height: 2;
+  }
 }
 
 
