@@ -689,7 +689,7 @@ footer .copy{
   transform: translate(-50%, 260%);
   color: #fff; /* 必要に応じて */
   text-align: center;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .fade-up {
