@@ -258,10 +258,11 @@ h1{
 
 .Story h2{
   padding: 40px 0 24px 0;
+  font-size: 20px;
 }
 
 .Story p{
-  font-size: 16px;
+  font-size: 11px;
   line-height: 27.2px;
 }
 
