@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tdp1199282514.github.io/golden-hour/sitemap.xml

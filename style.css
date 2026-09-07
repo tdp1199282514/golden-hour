@@ -295,7 +295,7 @@ h1{
 }
 
 .Director{
-    padding: 40px 40px 0 40px;
+    padding: 40px 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -747,9 +747,6 @@ footer .copy{
   margin-bottom: 24px;
 }
 
-.staff-credit p:first-child {
-  margin-bottom: 40px;
-}
 
 @media (max-width: 899px) {
   .staff-credit {
@@ -757,7 +754,7 @@ footer .copy{
   }
 
   .staff-credit p {
-    font-size: 11px;
+    font-size: 10px;
     line-height: 2;
   }
 }
