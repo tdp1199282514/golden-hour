@@ -246,6 +246,28 @@ h1{
   margin: 0;
 }
 
+/* News もっと見る */
+
+.news-more {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.news-more a {
+  display: inline-block;
+  color: #9e330f;
+  font-size: 14px;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #9e330f;
+  transition: opacity 0.3s ease;
+}
+
+.news-more a:hover {
+  opacity: 0.6;
+}
+
 .Introduction{
   padding: 40px 0 40px 0;
 }
@@ -619,24 +641,24 @@ h1{
     flex-shrink: 0;
 }
 
-/* 左方向 */
-@keyframes scroll-left{
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-300vw);
-    }
+/* 左へ流れる写真 */
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-/* 右方向 */
-@keyframes scroll-right{
-    from{
-        transform: translateX(-300vw);
-    }
-    to{
-        transform: translateX(0);
-    }
+/* 右へ流れる写真 */
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .Contact{
@@ -705,7 +727,7 @@ footer .copy{
   transform: translateY(0);
 }
 
-.news-item:nth-child(4) {
+#News .news-item:nth-child(n+4) {
   display: none;
 }
 
@@ -829,4 +851,42 @@ footer .copy{
     padding-top: 30px;
   }
 
+}
+
+.news-archive {
+  margin-top: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 60px;
+}
+
+.pagination button {
+  border: none;
+  background: none;
+  color: #888;
+
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-variant-numeric: lining-nums;
+
+  cursor: pointer;
+  padding: 8px;
+  min-width: 28px;
+  text-align: center;
+}
+
+.pagination button.active {
+  color: #9e330f;
+  border-bottom: 1px solid #9e330f;
+}
+
+.pagination button:disabled {
+  opacity: 0.25;
+  cursor: default;
 }

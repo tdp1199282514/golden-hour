@@ -1,0 +1,157 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>News｜映画『ゴールデンアワー』公式サイト</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+</head>
+
+<body class="news-page">
+
+  <main class="news-archive">
+    <div class="content_frame">
+
+      <h1>News</h1>
+
+      <div class="List" id="news-list"></div>
+
+      <div class="pagination" id="pagination"></div>
+
+      <div class="news-more">
+        <a href="index.html#News">← TOPへ戻る</a>
+      </div>
+
+    </div>
+  </main>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const newsList = document.getElementById("news-list");
+  const pagination = document.getElementById("pagination");
+  const perPage = 5;
+
+  try {
+    const response = await fetch("index.html");
+    if (!response.ok) throw new Error("読み込み失敗");
+
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+
+    const newsItems = Array.from(
+      doc.querySelectorAll("#News .news-item")
+    );
+
+    // 新しい日付順に並べる
+    newsItems.sort((a, b) => {
+      const dateA = a.querySelector(".news-date")?.textContent.trim() || "";
+      const dateB = b.querySelector(".news-date")?.textContent.trim() || "";
+      return dateB.localeCompare(dateA);
+    });
+
+    const totalPages = Math.ceil(newsItems.length / perPage);
+
+    function showPage(page) {
+      newsList.innerHTML = "";
+      pagination.innerHTML = "";
+
+      const start = (page - 1) * perPage;
+      const items = newsItems.slice(start, start + perPage);
+
+      items.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.classList.remove("fade-up", "show");
+        newsList.appendChild(clone);
+      });
+
+      if (totalPages <= 1) return;
+
+      function addButton(label, target, disabled, active = false) {
+        const button = document.createElement("button");
+        button.textContent = label;
+        button.disabled = disabled;
+        if (active) button.classList.add("active");
+        button.addEventListener("click", () => {
+          showPage(target);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        pagination.appendChild(button);
+      }
+
+      addButton("«", page - 1, page === 1);
+
+      for (let i = 1; i <= totalPages; i++) {
+        addButton(String(i), i, false, i === page);
+      }
+
+      addButton("»", page + 1, page === totalPages);
+    }
+
+    showPage(1);
+
+  } catch (error) {
+    console.error(error);
+    newsList.textContent = "ニュースを読み込めませんでした。";
+  }
+});
+</script>
+
+<script>
+  async function loadNews() {
+    const newsList = document.getElementById("news-list");
+
+    try {
+      const response = await fetch("index.html");
+
+      if (!response.ok) {
+        throw new Error("ニュースを取得できませんでした");
+      }
+
+      const html = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+
+      const newsItems = Array.from(
+        doc.querySelectorAll("#News .news-item")
+      );
+
+      // 日付の新しい順に並べる
+      newsItems.sort((a, b) => {
+        const dateA = a.querySelector(".news-date")?.textContent.trim() || "";
+        const dateB = b.querySelector(".news-date")?.textContent.trim() || "";
+
+        return dateB.localeCompare(dateA);
+      });
+
+      // ニュース一覧を表示
+      newsItems.forEach((item) => {
+        const clone = item.cloneNode(true);
+
+        // トップページ用のアニメーション設定を削除
+        clone.classList.remove("fade-up", "show");
+
+        newsList.appendChild(clone);
+      });
+
+    } catch (error) {
+      console.error(error);
+      newsList.textContent = "ニュースを読み込めませんでした。";
+    }
+  }
+
+  loadNews();
+</script>
+
+</body>
+</html>
+
