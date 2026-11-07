@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News｜映画『ゴールデンアワー』公式サイト</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="news-page">
+
+  <main class="news-detail">
+    <div class="content_frame">
+      <h1>News</h1>
+
+      <article id="news-content"></article>
+
+      <div class="news-more news-detail-links">
+  <a href="news.html">← News一覧へ戻る</a>
+  <a href="index.html#News">← TOPへ戻る</a>
+</div>
+  </main>
+
+  <script>
+    const newsData = {
+      press: {
+        date: "2026.11.07",
+        title: "シネマ尾道での上映にあたり、中国新聞、読売新聞様に取材していただきました。",
+        body: `
+          <p>映画『ゴールデンアワー』のシネマ尾道での上映にあたり、中国新聞、読売新聞に取材していただきました。</p>
+
+          <p>各紙の記事は以下よりご覧いただけます。</p>
+
+          <p>
+            <a href="https://www.chugoku-np.co.jp/articles/-/891867" target="_blank" rel="noopener noreferrer">中国新聞様の記事はこちら</a>
+          </p>
+
+          <p>
+            <a href="https://www.yomiuri.co.jp/local/hiroshima/news/20260906-GYTNT00142/" target="_blank" rel="noopener noreferrer">読売新聞様の記事はこちら</a>
+          </p>
+        `
+      },
+
+      onomichi: {
+        date: "2026.09.13",
+        title: "物語の舞台である広島県尾道市のシネマ尾道にて先行上映を実施し、満席を超える動員を記録いたしました。",
+        body: `
+          <p>9月13日（日）にシネマ尾道で行われた先行上映は、112席が満席となり、急遽補助席を追加しての上映となりました。</p>
+
+          <p>上映後には、浮田聡也監督と越眞里亜プロデューサーによる舞台挨拶を行い、作品を制作した経緯や、広島・尾道を舞台にする上での方言へのこだわりについてお話ししました。</p>
+
+          <p>ご来場いただいた皆様、そして上映にあたりお力添えいただいたシネマ尾道の皆様、誠にありがとうございました。</p>
+
+          <p>先行上映に関する記事はこちらから</p>
+
+          <p>
+            <a href="https://www.chugoku-np.co.jp/articles/-/894574" target="_blank" rel="noopener noreferrer">中国新聞様の記事はこちら</a>
+          </p>
+
+          <p>
+            <a href="https://mainichi.jp/articles/20260916/ddl/k34/200/223000c" target="_blank" rel="noopener noreferrer">毎日新聞様の記事はこちら</a>
+          </p>
+        `
+      }
+    };
+
+    const id = new URLSearchParams(window.location.search).get("id");
+    const news = newsData[id];
+    const container = document.getElementById("news-content");
+
+    if (news) {
+      document.title = news.title + "｜ゴールデンアワー";
+      container.innerHTML = `
+        <div class="news-detail-date">${news.date}</div>
+        <h2 class="news-detail-title">${news.title}</h2>
+        <div class="news-detail-body">${news.body}</div>
+      `;
+    } else {
+      container.innerHTML = "<p>ニュースが見つかりませんでした。</p>";
+    }
+  </script>
+</body>
+</html>

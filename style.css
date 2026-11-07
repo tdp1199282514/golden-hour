@@ -1,4 +1,3 @@
-html,
 * {
   padding: 0;
   margin: 0;
@@ -10,17 +9,16 @@ html {
 }
 
 body {
-  /* 英字 */
-  font-family: "Cormorant Infant", serif;
-
-  /* 日本語 */
+  /* 元のCSSで有効になっていたフォント */
   font-family: "Shippori Mincho", serif;
 }
 
-h1{
-    font-size: 28px;
-    font-family: "Cormorant Garamond", serif;
-    font-weight: 200;
+h1 {
+  font-size: 28px;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 200;
+  text-align: center;
+  color: #d08b00;
 }
 
 h2{
@@ -136,16 +134,34 @@ h2{
   display: flex;
   justify-content: center;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(255,202,96) 0%,
-    rgba(255, 255, 255, 1) 80%
-  );
+  /* 背景だけを独立させ、文字の登場アニメーションを維持 */
+  isolation: isolate;
 
   transform: translateY(-100%);
-  transition: transform .8s cubic-bezier(.77,0,.175,1);
+  transition: transform 1.15s cubic-bezier(.77,0,.175,1);
 
   z-index: 1100;
+}
+
+
+/* 降りてくる動きに合わせて背景を徐々に表示 */
+.menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgb(255, 202, 96) 0%,
+    rgb(255, 255, 255) 80%
+  );
+  opacity: 0;
+  transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu.active::before {
+  opacity: 1;
 }
 
 .menu-content{
@@ -154,8 +170,12 @@ h2{
   align-items: center;
 }
 
-.menu-logo{
+.menu-logo {
   margin-bottom: -20px;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .menu-logo img{
@@ -177,6 +197,12 @@ h2{
 
 .menu li {
   margin: 28px 0;
+  opacity: 0;
+  transform: translateY(25px);
+  filter: blur(5px);
+  transition: opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.75s ease;
 }
 
 .menu a {
@@ -184,6 +210,9 @@ h2{
   color: #9e330f;
   font-size: 24px;
   letter-spacing: 0.08em;
+  display: inline-block;
+  transition: opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .fv img {
@@ -192,11 +221,6 @@ h2{
 
 .Trailer{
     padding: 40px 0 0 0;
-}
-
-h1{
-    text-align: center;
-    color: #d08b00;
 }
 
 .Youtube {
@@ -393,10 +417,6 @@ h1{
 
 .modal .profile-modal{
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
 }
 
 .close{
@@ -480,98 +500,62 @@ h1{
     gap: 64px;
 }
 
-.profile-card .picture.cast1 {
-  background-image: url("GHimg/masato.jpg");
-}
-
-.profile-card .picture.cast2 {
-  background-image: url("GHimg/sono.jpg");
-}
-
-.profile-card .picture.cast3 {
-  background-image: url("GHimg/hashiguti.jpg");
-}
-
-.profile-card .picture.cast4 {
-  background-image: url("GHimg/konishi.jpg");
-}
-
-.profile-card .picture.cast5 {
-  background-image: url("GHimg/Hara.webp");
-}
-
-.profile-card .picture.cast6 {
-  background-image: url("GHimg/Furusyou.webp");
-}
-
-.profile-card .picture.cast7 {
-  background-image: url("GHimg/Okiyama.webp");
-}
-
-.profile-card .picture.cast8 {
-  background-image: url("GHimg/Suzuki.webp");
-}
-
-.profile-card .picture.cast9 {
-  background-image: url("GHimg/Saitou.webp");
-}
-
-.profile-card .picture.cast10 {
-  background-image: url("GHimg/Izawa.webp");
-}
-
-.profile-card .picture.cast11 {
-  background-image: url("GHimg/Onoue.webp");
-}
-
-.profile-card .picture.cast12 {
-  background-image: url("GHimg/amao.jpg");
-}
-
+.profile-card .picture.cast1,
 .profile-modal .picture02.cast1 {
   background-image: url("GHimg/masato.jpg");
 }
 
+.profile-card .picture.cast2,
 .profile-modal .picture02.cast2 {
   background-image: url("GHimg/sono.jpg");
 }
 
+.profile-card .picture.cast3,
 .profile-modal .picture02.cast3 {
   background-image: url("GHimg/hashiguti.jpg");
 }
 
+.profile-card .picture.cast4,
 .profile-modal .picture02.cast4 {
   background-image: url("GHimg/konishi.jpg");
 }
 
+.profile-card .picture.cast5,
 .profile-modal .picture02.cast5 {
   background-image: url("GHimg/Hara.webp");
 }
 
+.profile-card .picture.cast6,
 .profile-modal .picture02.cast6 {
   background-image: url("GHimg/Furusyou.webp");
 }
 
+.profile-card .picture.cast7,
 .profile-modal .picture02.cast7 {
   background-image: url("GHimg/Okiyama.webp");
 }
 
+.profile-card .picture.cast8,
 .profile-modal .picture02.cast8 {
   background-image: url("GHimg/Suzuki.webp");
 }
 
+.profile-card .picture.cast9,
 .profile-modal .picture02.cast9 {
   background-image: url("GHimg/Saitou.webp");
 }
 
+.profile-card .picture.cast10,
 .profile-modal .picture02.cast10 {
   background-image: url("GHimg/Izawa.webp");
 }
 
+.profile-card .picture.cast11,
 .profile-modal .picture02.cast11 {
   background-image: url("GHimg/Onoue.webp");
 }
 
+.profile-card .picture.cast12,
 .profile-modal .picture02.cast12 {
   background-image: url("GHimg/amao.jpg");
 }
@@ -769,7 +753,6 @@ footer .copy{
   margin-bottom: 24px;
 }
 
-
 @media (max-width: 899px) {
   .staff-credit {
     padding: 0 20px;
@@ -777,10 +760,8 @@ footer .copy{
 
   .staff-credit p {
     font-size: 10px;
-    line-height: 2;
   }
 }
-
 
 @media (min-width: 900px){
 
@@ -810,7 +791,6 @@ footer .copy{
     margin: 0 auto;
   }
 
-
   /* 残り8人 */
   .profile-list.grid{
     display: grid;
@@ -830,11 +810,6 @@ footer .copy{
   .profile-list.grid .profile-card h3,
   .profile-list.grid .profile-card p{
     max-width: 180px;
-  }
-
-  /* PCでは説明文も表示する場合 */
-  .profile-list.grid .profile-card p{
-    display: none;
   }
 
   .Move_photo {
@@ -889,4 +864,166 @@ footer .copy{
 .pagination button:disabled {
   opacity: 0.25;
   cursor: default;
+}
+
+/* ニュース一覧のリンク */
+.news-text a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.news-text a:hover {
+  opacity: 0.7;
+}
+
+/* ニュース詳細ページ */
+.news-detail {
+  padding: 80px 0 100px;
+  min-height: 100vh;
+}
+
+.news-detail article {
+  max-width: 800px;
+  margin: 60px auto 0;
+}
+
+.news-detail-date {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 24px;
+}
+
+.news-detail-title {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.8;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.news-detail-body {
+  margin-top: 40px;
+}
+
+.news-detail-body p {
+  font-size: 14px;
+  line-height: 2.2;
+  margin-bottom: 24px;
+}
+
+.news-detail-body a {
+  color: #9e330f;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.news-detail-body a:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 899px) {
+  .news-detail {
+    padding: 70px 0 80px;
+  }
+
+  .news-detail article {
+    margin-top: 40px;
+  }
+
+  .news-detail-title {
+    font-size: 18px;
+  }
+}
+
+/* ニュース全体を基準にする */
+.news-item:has(.news-text a) {
+  position: relative;
+  padding-right: 40px;
+}
+
+/* 矢印を日付＋本文の中央に配置 */
+.news-item:has(.news-text a)::after {
+  content: "▶︎";
+  position: absolute;
+  right: 10px;
+  top: calc(50% + 12px);
+  transform: translateY(-50%);
+  color: #0e0b0a;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+/* ニュース詳細ページの戻るリンク */
+.news-detail-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu.active .menu-logo {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.45s;
+}
+
+.menu.active li {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* 文字を順番に出す */
+.menu.active li:nth-child(1) {
+  transition-delay: 0.5s;
+}
+
+.menu.active li:nth-child(2) {
+  transition-delay: 0.58s;
+}
+
+.menu.active li:nth-child(3) {
+  transition-delay: 0.66s;
+}
+
+.menu.active li:nth-child(4) {
+  transition-delay: 0.74s;
+}
+
+.menu.active li:nth-child(5) {
+  transition-delay: 0.82s;
+}
+
+.menu.active li:nth-child(6) {
+  transition-delay: 0.9s;
+}
+
+/* 閉じるときはすぐに文字を消す */
+.menu:not(.active) .menu-logo,
+.menu:not(.active) li {
+  transition-delay: 0s;
+}
+
+.menu a:hover {
+  opacity: 0.65;
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu,
+  .menu::before,
+  .menu-logo,
+  .menu li,
+  .menu a {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    filter: none;
+  }
 }

@@ -106,52 +106,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 </script>
 
-<script>
-  async function loadNews() {
-    const newsList = document.getElementById("news-list");
-
-    try {
-      const response = await fetch("index.html");
-
-      if (!response.ok) {
-        throw new Error("ニュースを取得できませんでした");
-      }
-
-      const html = await response.text();
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
-
-      const newsItems = Array.from(
-        doc.querySelectorAll("#News .news-item")
-      );
-
-      // 日付の新しい順に並べる
-      newsItems.sort((a, b) => {
-        const dateA = a.querySelector(".news-date")?.textContent.trim() || "";
-        const dateB = b.querySelector(".news-date")?.textContent.trim() || "";
-
-        return dateB.localeCompare(dateA);
-      });
-
-      // ニュース一覧を表示
-      newsItems.forEach((item) => {
-        const clone = item.cloneNode(true);
-
-        // トップページ用のアニメーション設定を削除
-        clone.classList.remove("fade-up", "show");
-
-        newsList.appendChild(clone);
-      });
-
-    } catch (error) {
-      console.error(error);
-      newsList.textContent = "ニュースを読み込めませんでした。";
-    }
-  }
-
-  loadNews();
-</script>
-
 </body>
 </html>
 
